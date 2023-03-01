@@ -1,7 +1,4 @@
 'use client';
-import Image from 'next/image'
-// import styles from './page.module.css'
-// import { useState } from 'react';
 import PocketBase from 'pocketbase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
