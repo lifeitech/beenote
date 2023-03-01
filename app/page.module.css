@@ -1,0 +1,48 @@
+@keyframes transition1 {
+  from {
+    background-image: url("/bg1.jpg");
+  }
+  to {
+    background-image: url("/bg2.jpg");
+  }
+}
+
+@keyframes transition2 {
+  from {
+    background-image: url("/bg2.jpg");
+  }
+  to {
+    background-image: url("/bg3.jpg");
+  }
+}
+
+@keyframes transition3 {
+  from {
+    background-image: url("/bg3.jpg");
+  }
+  to {
+    background-image: url("/bg4.jpg");
+  }
+}
+
+@keyframes transition4 {
+  from {
+    background-image: url("/bg4.jpg");
+  }
+  to {
+    background-image: url("/bg1.jpg");
+  }
+}
+
+
+.hero {
+  background-image: url("/bg1.jpg");
+  /* animation-delay: 2s; */
+  /* animation-name: animatedBackground; */
+  /* animation-duration: 15s; */
+  animation-name: transition1, transition2, transition3, transition4;
+  animation-duration: 1s, 1s, 1s, 1s;
+  animation-delay: 2s, 6s, 11s, 16s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+ }

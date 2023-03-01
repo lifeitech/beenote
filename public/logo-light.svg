@@ -1,0 +1,9 @@
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+ <title>logo</title>
+
+ <g>
+  <title>Layer 1</title>
+  <path transform="rotate(90 25 25)" id="svg_10" d="m4.84621,25l8.63734,-17.27467l23.0329,0l8.63733,17.27467l-8.63733,17.27467l-23.0329,0l-8.63734,-17.27467z" stroke-width="6" stroke="#181830" fill="none"/>
+  <text transform="matrix(1.60078 0 0 1.60078 -17.6025 -14.5147)" stroke="#181830" xml:space="preserve" text-anchor="start" font-size="16" id="svg_11" y="29.9649" x="21.83243" stroke-width="2" fill="#000000">B</text>
+ </g>
+</svg>
