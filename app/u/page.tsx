@@ -17,8 +17,8 @@ export default async function Home() {
     </div>
     <div className="min-h-screen">
     <div className="text-center">
-    <h1 className="text-3xl font-bold pt-10 pb-10">Language Notebooks</h1>
-      <div className="flex flex-wrap gap-10 m-10">
+    <h1 className="text-3xl font-bold py-10">Language Notebooks</h1>
+      <div className="flex flex-wrap gap-10 p-10">
         {res.map(item => {
           // return <Lang key={item.id} lang={item.lang} name={item.name}/>;
           return (
