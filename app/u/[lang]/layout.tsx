@@ -31,7 +31,7 @@ export default async function LanguageLayout({children, params}: {children: Reac
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 pt-16 w-56 bg-primary text-base-content">
+        <ul className="menu p-4 pt-16 w-fit bg-primary text-base-content">
 
           <li><Link href={`/u`}><i className="ri-arrow-left-circle-line"></i>Languages</Link></li>
 

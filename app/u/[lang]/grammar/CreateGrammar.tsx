@@ -32,7 +32,7 @@ export default function CreateGrammar({lang}:{lang:string}) {
                   {
                     "content": [
                       {
-                        "text": "create your grammar notes here",
+                        "text": "create your grammar notes here...",
                         "type": "text"
                       }
                     ],
