@@ -13,7 +13,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'beenote.fly.dev',
-        port: '8080',
+        port: '',
         pathname: '/api/files/**',
       },
     ],
