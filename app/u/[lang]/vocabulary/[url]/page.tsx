@@ -17,7 +17,7 @@ export default async function Home({ params }: any) {
     <div className="ml-4">
     <Title id={id} title={title} /*url={url} lang={lang}*/  />
 
-    <div className="flex flex-row max-w-max bg-secondary border-l-4 border-l-transparent rounded-lg h-10 items-center mb-2 pr-12">
+    <div className="flex flex-row flex-wrap max-w-max bg-secondary border-l-4 border-l-transparent rounded-lg h-fit items-center mb-2 py-2 pr-12">
     {/* <div className="divider divider-horizontal p-0 m-0"></div> */}
     <div className="font-bold font-mono text-lg w-32 flex justify-center">word</div>
     <div className="divider divider-horizontal p-0 m-0"></div>

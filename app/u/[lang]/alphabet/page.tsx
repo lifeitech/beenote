@@ -21,7 +21,7 @@ export default async function Home({ params }: any) {
           <>
           <CategoryTitle lang={lang} title={cat}/>
           {/* <h2 className="text-2xl font-bold mt-5 mb-5">{cat == 'default' ? '' : cat}</h2> */}
-          <div className="grid gap-10 grid-cols-5 max-w-4xl">
+          <div className="flex flex-wrap gap-2 lg:grid lg:gap-10 lg:grid-cols-5 lg:max-w-4xl">
           {alphabets_cat.map(item => { 
             return <Alphabet key={item.id}
                             id = {item.id}
