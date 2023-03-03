@@ -37,9 +37,6 @@
 
 .hero {
   background-image: url("/bg1.jpg");
-  /* animation-delay: 2s; */
-  /* animation-name: animatedBackground; */
-  /* animation-duration: 15s; */
   animation-name: transition1, transition2, transition3, transition4;
   animation-duration: 1s, 1s, 1s, 1s;
   animation-delay: 2s, 6s, 11s, 16s;
