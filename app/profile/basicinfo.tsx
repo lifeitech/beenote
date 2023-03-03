@@ -22,9 +22,14 @@ export default function BasicInfo() {
         e.preventDefault();
         const form = e.currentTarget;
         const formData = new FormData(form);
-        const updatedRecord = await pb.collection('users').update(userId, formData);
-        toast.success('Successfully uploaded new avatar');
-        router.refresh();
+        try {
+            const updatedRecord = await pb.collection('users').update(userId, formData);
+            toast.success('Successfully uploaded new avatar');
+            setAvatarFilename(updatedRecord.avatar);
+        } catch (error) {
+            toast.error("An error happened.")
+        }
+        
     }
     const updateName = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -33,7 +38,7 @@ export default function BasicInfo() {
         try {
             const updatedRecord = await pb.collection('users').update(userId, formData);
             toast.success('Successfully updated your name');
-            setName(formData.get('name').toString());
+            setName(updatedRecord.name);
         } catch (error) {
             toast.error('An error happened. Please try again.');
         }     
