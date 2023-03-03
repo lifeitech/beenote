@@ -26,13 +26,17 @@ export default function BasicInfo() {
         toast.success('Successfully uploaded new avatar');
         router.refresh();
     }
-
     const updateName = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
         const formData = new FormData(form);
-        const updatedRecord = await pb.collection('users').update(userId, formData);
-        toast.success('Successfully updated your name');
+        try {
+            const updatedRecord = await pb.collection('users').update(userId, formData);
+            toast.success('Successfully updated your name');
+            setName(formData.get('name').toString());
+        } catch (error) {
+            toast.error('An error happened. Please try again.');
+        }     
         setModifyName(false);
     }
 
@@ -51,13 +55,13 @@ export default function BasicInfo() {
             {modifyName?
             <form className='flex flex-row gap-2' method="post" onSubmit={updateName}>
                 <input type="text" name="name" defaultValue={name} className="input input-bordered w-full max-w-xs" />
-                <button type="submit" className="btn">Change</button>
+                <button type='submit' className="btn">Change</button>
                 <button type="button" className="btn btn-ghost" onClick={()=>setModifyName(false)}>Cancel</button>
             </form>
             : 
             <div className="text-3xl font-bold">{name}</div>}
             
-            {modifyName? null : <i onClick={()=>setModifyName(true)} className="text-2xl ri-edit-line cursor-pointer"></i>}
+            {modifyName? null : <i onClick={()=>setModifyName(true)} className="text-2xl ri-edit-line cursor-pointer text-neutral-content hover:text-base-content"></i>}
         </div>
         </div>
     )

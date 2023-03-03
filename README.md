@@ -21,28 +21,6 @@ It is an app that can perform all the CRUD (Create, Read, Update and Delete) ope
 
 This app uses [PocketBase](https://pocketbase.io/) for user authentication and database.
 
-## How to Build
-
-1. Clone this repository to your local machine.
-
-    ```shell
-    git clone https://github.com/lifeitech/beenote.git
-    ```
-
-2. `cd` to the repository. Install all dependencies by running
-
-    ```shell
-    npm install
-    ```
-
-3. Run
-
-    ```shell
-    npm run dev
-    ```
-
-    to start developing.
-
 
 ## TODO
 
