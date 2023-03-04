@@ -22,48 +22,8 @@ export default function Home() {
         </div>
         </div>
       </div>
-      <div className='absolute bottom-0 z-10 h-28 w-full bg-gradient-to-t from-base-200 to-transparent'></div>
+      {/* <div className='absolute bottom-0 z-10 h-28 w-full bg-gradient-to-t from-primary to-transparent'></div> */}
     </div>   
-
-    <div className="hero h-auto py-40 bg-base-200">
-      <div className="hero-content flex-col gap-10 lg:flex-row-reverse">
-        <Image width={300} height={300} src="/sample.png" alt='app illustration' className="max-w-sm rounded-lg shadow-2xl" />
-        <div>
-          <h1 className="text-4xl font-bold">Taking language notes has never been easier</h1>
-          <p className="py-6 text-xl">No hustle. Just focus on your language learning.</p>
-          <Link href='/signup'><button className="btn btn-primary">Get Started</button></Link>
-        </div>
-      </div>
-    </div>
-
-    <div className="hero h-auto py-32 bg-base-200">
-      <div className="hero-content flex-col gap-10 lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-4xl font-bold">Create an account today</h1>
-          <p className="py-6 text-xl">It is free, forever.</p>
-        </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input type="text" placeholder="email" className="input input-bordered" />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input type="text" placeholder="password" className="input input-bordered" />
-            </div>
-            <div className="form-control mt-6">
-              <Link href="/signup"><button className="btn btn-primary btn-block">Sign Up</button></Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <Footer/>
     </div>  
     )

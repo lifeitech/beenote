@@ -50,16 +50,16 @@ export default function BasicInfo() {
         <div className='flex flex-col items-start gap-10'>
             <Image height={250} width={250} src={`${process.env.NEXT_PUBLIC_POCKETBASE}/api/files/users/${userId}/${avatarFilename}`} alt="avatar" className='rounded-md' />
 
-            <form className='flex flex-row gap-2' method="post" onSubmit={updateAvatar}>
-            <input type="file" name="avatar" required className="file-input file-input-bordered file-input-md w-full max-w-xs" />
+            <form className='flex flex-row flex-wrap gap-2' method="post" onSubmit={updateAvatar}>
+            <input type="file" name="avatar" required className="file-input file-input-bordered file-input-md max-w-xs" />
             <button type="submit" className="btn">Change</button> 
             </form>
         </div>
 
         <div className='flex flex-row gap-5 items-end'>
             {modifyName?
-            <form className='flex flex-row gap-2' method="post" onSubmit={updateName}>
-                <input type="text" name="name" defaultValue={name} className="input input-bordered w-full max-w-xs" />
+            <form className='flex flex-row flex-wrap gap-2' method="post" onSubmit={updateName}>
+                <input type="text" name="name" defaultValue={name} className="input input-bordered max-w-xs" />
                 <button type='submit' className="btn">Change</button>
                 <button type="button" className="btn btn-ghost" onClick={()=>setModifyName(false)}>Cancel</button>
             </form>
