@@ -9,7 +9,7 @@ export default function Footer() {
         <Logo size={50}/>
         <p className="font-bold"><a href="https://lifei.tech" target="_blank" rel="noreferrer">@<u>lifeitech</u></a></p> 
         <p>A Next.js 13 Project</p>
-        <p>Copyright © 2023 - All right reserved</p>
+        <p>Copyright © 2023 - All rights reserved</p>
       </div> 
       <div>
         <div className="grid grid-flow-col gap-4">

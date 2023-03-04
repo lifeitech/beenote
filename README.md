@@ -1,4 +1,4 @@
-# [Work in Progress] BeeNote - Full stack CRUD application built with Next.js 13
+# BeeNote - Full stack CRUD application built with Next.js 13
 
 ***Tech stack: Next.js 13 + Tailwind + DaisyUI + PocketBase***
 
@@ -10,7 +10,7 @@ It is an app that can perform all the CRUD (Create, Read, Update and Delete) ope
 
 ## Frontend
 
-- Next.js 13 further blurs the line between frontend and backend. It provides routing, server-side rendering, image optimization and more.
+- Next.js 13 further blurs the line between frontend and backend. It provides routing, server-side rendering, client-side navigation, image optimization and more.
 
 - TailwindCSS and DaisyUI are used for styling.
 
@@ -19,7 +19,7 @@ It is an app that can perform all the CRUD (Create, Read, Update and Delete) ope
 
 ## Backend
 
-This app uses [PocketBase](https://pocketbase.io/) for user authentication and database.
+This app uses [PocketBase](https://pocketbase.io/) for database and user authentication.
 
 
 ## TODO
