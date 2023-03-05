@@ -16,7 +16,7 @@ export default function BasicInfo() {
         setuserId(pb.authStore.model.id);
         setName(pb.authStore.model.name);
         setAvatarFilename(pb.authStore.model.avatar);
-    }, [])    
+    }, [])
 
     const updateAvatar = async (e:React.FormEvent<HTMLFormElement>)=> { 
         e.preventDefault();

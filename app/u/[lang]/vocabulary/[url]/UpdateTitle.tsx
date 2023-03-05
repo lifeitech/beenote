@@ -17,6 +17,7 @@ export default function Title({title, id}:{title:string, id:string}) {
         if (!res.code) {toast.success('Success');}
         else {toast.error('Operation failed')}
         setModifyTitle(false);
+        
         router.refresh();
     }
 

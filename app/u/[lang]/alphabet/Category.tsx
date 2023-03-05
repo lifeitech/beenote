@@ -8,9 +8,9 @@ import toast from 'react-hot-toast';
 export function CreateCategory({lang}:{lang:string}) {
     const router = useRouter();
     const create = async () => {
-      const client = getclient();
-      const userId = client.authStore.model.id;
-      const res = await client.collection('alphabet').create({
+      const pb = getclient();
+      const userId = pb.authStore.model.id;
+      const res = await pb.collection('alphabet').create({
             userId: userId,
             lang: lang,
             category: `Untitled-${crypto.randomUUID().substring(0, 5)}`,
@@ -29,42 +29,52 @@ export function CreateCategory({lang}:{lang:string}) {
 
 export function CategoryTitle({title, lang}:{title:string, lang:string}) {
   const [modifyTitle, setModifyTitle] = useState(false);
-  const [newtitle, setNewtitle] = useState(title);
+
   const router = useRouter();
-  const updateTitle = async () => {
-    const client = getclient();
-    const alphabets = await client.collection('alphabet').getFullList(1, {filter: `lang="${lang}" && category="${title}"`});
+
+  const updateTitle = async (e:React.FormEvent<HTMLFormElement>) => {
+    try {
+    const pb = getclient();
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const alphabets = await pb.collection('alphabet').getFullList(1, {filter: `lang="${lang}" && category="${title}"`});
     alphabets.map(async item => {
-      const res = await client.collection('alphabet').update(item.id, {'category':newtitle})
-      if (res.code){toast.error('Something bad happened')}
-    })
+        const res = await pb.collection('alphabet').update(item.id, formData)  
+    });
     toast.success('Success');
+    } catch (error) {
+      toast.error('Something bad happened')
+      }
     setModifyTitle(false);
     router.refresh();
     }
 
     const deleteCategory = async () => {
-      const client = getclient();
-      const alphabets = await client.collection('alphabet').getFullList(1, {filter: `lang="${lang}" && category="${newtitle}"`});
-      alphabets.map(async item => {
-      const res = await client.collection('alphabet').delete(item.id);
+      try {
+        const pb = getclient();
+        const alphabets = await pb.collection('alphabet').getFullList(1, {filter: `lang="${lang}" && category="${title}"`});
+        alphabets.map(async item => {
+        const res = await pb.collection('alphabet').delete(item.id);
     })
-    toast.success('Deleted');
+    toast.success('Deleted'); 
+      } catch (error) {
+        toast.error('Something bad happened')
+      }
     router.refresh();
     }
 
   return (
-    // <h2 contentEditable="true" onBlur={(e)=>update(e.currentTarget.textContent)} className="text-3xl font-bold m-4">{title}</h2>
     <div className='flex flex-row gap-2 items-center'>
     <div className='flex flex-row gap-8 items-center py-4'>
         {modifyTitle?
-        <div className='flex flex-row gap-2'>
-            <input type="text" value={newtitle} onChange={(e)=>setNewtitle(e.target.value)} className="input input-bordered text-2xl w-full" />
-            <button onClick={updateTitle} className="btn">Change</button>
+        <form className='flex flex-row gap-2' method='post' onSubmit={updateTitle}>
+            <input type="text" name='category' defaultValue={title} className="input input-bordered text-2xl w-full" />
+            <button type='submit' className="btn">Change</button>
             <button className="btn btn-ghost" onClick={()=>setModifyTitle(false)}>Cancel</button>
-        </div>
+        </form>
         : 
-        <h3 className="text-2xl mt-2 mb-2">{newtitle}</h3>}
+        <h3 className="text-2xl mt-2 mb-2">{title}</h3>}
         
         {modifyTitle? null : <i title='Change category name' onClick={()=>setModifyTitle(true)} className="text-neutral-content hover:text-base-content text-xl ri-edit-line cursor-pointer"></i>}
     </div>
