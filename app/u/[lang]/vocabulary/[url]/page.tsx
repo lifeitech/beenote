@@ -6,7 +6,7 @@ import CreateWord from './CreateWord';
 export default async function Home({ params }: any) {
   const url = params.url; // user-defined url only, no lang info
   const client = getclient();
-  const words = await client.collection('vocabulary').getFullList(1, {filter: `url="${url}"`});
+  const words = await client.collection('vocabulary').getFullList(1, {filter: `url="${url}"`, sort: 'created'});
   // get document title
   const words_doc = await client.collection('vocabulary_doc').getFirstListItem(`url="${url}"`);
   const id = words_doc.id;
