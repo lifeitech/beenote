@@ -1,24 +1,30 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import getclient from '@utils/pb-client'
 import toast from 'react-hot-toast'
+import isValid from '@utils/validateURL'
+
 
 export default function Title({id, title, url, lang}:{id:string, title:string, url:string, lang:string}) {
     const [newtitle, setNewTitle] = useState(title);
     const [newurl, setNewUrl] = useState(url);
     const router = useRouter();
-    const pb = getclient();
 
     const updateTitle = async () => {
+        if (!isValid(newurl)) {
+          alert('Please enter valid URL!')
+          return
+        }
+        const pb = getclient();
         const updatedRecord = await pb.collection('grammar').update(id, {
             'title': newtitle,
             'url': newurl
         });
         toast.success('Successfully updated the title');
         router.push(`/u/${lang}/grammar/${newurl}`);
-
     }
+
     return (
     <div className='flex flex-row gap-2 items-baseline'>
     <h2 className="text-3xl font-bold mt-0 mx-4 mb-4 bg-base-100">{title}</h2>

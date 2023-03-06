@@ -1,8 +1,10 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import getclient from '@utils/pb-client'
 import toast from 'react-hot-toast'
+import isValid from '@utils/validateURL'
+
 
 export default function Title({id, title, url, lang}:{id:string, title:string, url:string, lang:string}) {
     const [newtitle, setNewTitle] = useState(title);
@@ -11,6 +13,10 @@ export default function Title({id, title, url, lang}:{id:string, title:string, u
     const pb = getclient();
 
     const updateTitle = async () => {
+        if (!isValid(newurl)) {
+          alert('Please enter valid URL!')
+          return
+        }
         const updatedRecord = await pb.collection('custom').update(id, {
             'title': newtitle,
             'url': newurl

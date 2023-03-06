@@ -12,7 +12,7 @@ export default function CreateCustom({lang}:any) {
 
     const router = useRouter();
 
-    const handleTyping = (e)=> {
+    const handleTyping = (e:React.ChangeEvent<HTMLInputElement>)=> {
       setTitle(e.target.value);
       setUrl(e.target.value.toLowerCase().replaceAll(' ', '-'))
     }
