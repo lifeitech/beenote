@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import ProfileDrop from '@utils/ProfileDrop'
 import Footer from '@utils/footer';
 import styles from './page.module.css';

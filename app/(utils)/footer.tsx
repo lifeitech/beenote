@@ -1,11 +1,9 @@
-import Image from "next/image"
 import Logo from "./Logo"
 
 export default function Footer() {
     return (
     <footer className="footer footer-center p-10 bg-primary text-primary-content">
       <div>
-        {/* <Image src="/logo.svg" width={50} height={50} alt="logo"/> */}
         <Logo size={50}/>
         <p className="font-bold"><a href="https://lifei.tech" target="_blank" rel="noreferrer">@<u>lifeitech</u></a></p> 
         <p>A Next.js 13 Project</p>
