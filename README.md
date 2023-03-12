@@ -6,7 +6,9 @@ BeeNote is a full stack web application for taking language learning notes, buil
 
 <img src="screenshot.png" style="zoom:80%;" />
 
-It is an app that can perform all the CRUD (Create, Read, Update and Delete) operations. There is a user system, where user can be created by signing up with emails. Once a user has logged in, he/she can add, update and delete alphabet and vocabulary entries, as well as grammar notes and custom notes. Users can also record and upload audios to help with pronunciation, and upload images for visualization. 
+It is an app that can perform all the CRUD (create, read, update and delete) operations. First, create an account in the [signup](https://beenote.app/signup) page. Then after you have logged in with your account, you can add, update and delete alphabet and vocabulary entries on the server, with support for audio recording and image uploading. You can also edit and save grammar notes and custom notes with a rich text editor.
+
+For more details see this [blog post](https://lifei.tech/posts/beenote/). 
 
 ## Frontend
 
@@ -14,14 +16,14 @@ It is an app that can perform all the CRUD (Create, Read, Update and Delete) ope
 
 - TailwindCSS and DaisyUI are used for styling.
 
-- The note editor is built with [Tiptap](https://tiptap.dev/).
+- [Tiptap](https://tiptap.dev/) is used to build the rich text editor.
 
 
 ## Backend
 
-- This app uses [PocketBase](https://pocketbase.io/) for database and user authentication. Note that PocketBase is still in active development. Some functionalities like batch delete are still to be implemented.
+- [PocketBase](https://pocketbase.io/) for database and user authentication. Note that PocketBase is still in active development. Some functionalities like batch delete are still to be implemented.
 
-- AWS SES for email sending.
+- [AWS SES](https://aws.amazon.com/ses/) for email sending.
 
 
 ## TODO
