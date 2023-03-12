@@ -23,10 +23,6 @@ export default function Home() {
       </div>
       {/* <div className='absolute bottom-0 z-10 h-28 w-full bg-gradient-to-t from-primary to-transparent'></div> */}
     </div>
-    <div className="spinner">
-      <div className="double-bounce1"></div>
-      <div className="double-bounce2"></div>
-    </div>
     <Footer/>
     </div>  
     )
