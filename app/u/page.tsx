@@ -7,7 +7,7 @@ import DeleteLang from './DeleteLang'
 
 export default async function Home() {
   const client = getclient();
-  const res = await client.collection('language').getFullList();
+  const res = await client.collection('language').getFullList({sort:'created'});
   const langlist = res.map((item) => item.lang);
 
   return (
