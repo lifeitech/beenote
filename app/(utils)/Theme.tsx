@@ -41,5 +41,4 @@ export default function ThemeProvider({children}:{children: React.ReactNode}) {
     </ToggleThemeContext.Provider>
     </ThemeContext.Provider>
   )
-
 }

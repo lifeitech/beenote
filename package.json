@@ -1,6 +1,6 @@
 {
   "name": "beenote",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -26,13 +26,14 @@
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
     "next": "^13.2.3",
-    "pocketbase": "^0.8.0",
+    "pocketbase": "^0.12.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-spinners": "^0.13.6",
     "remixicon": "^2.5.0",
     "sharp": "^0.31.3",
+    "spinkit": "^2.0.1",
     "typescript": "4.8.4"
   },
   "devDependencies": {

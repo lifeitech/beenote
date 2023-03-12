@@ -19,7 +19,9 @@ It is an app that can perform all the CRUD (Create, Read, Update and Delete) ope
 
 ## Backend
 
-This app uses [PocketBase](https://pocketbase.io/) for database and user authentication.
+- This app uses [PocketBase](https://pocketbase.io/) for database and user authentication. Note that PocketBase is still in active development. Some functionalities like batch delete are still to be implemented.
+
+- AWS SES for email sending.
 
 
 ## TODO

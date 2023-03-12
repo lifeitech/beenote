@@ -3,10 +3,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image'
 import getclient from '@utils/pb-client'
 import toast from 'react-hot-toast'
-import { useRouter } from 'next/navigation';
 
 export default function BasicInfo() {
-    const router = useRouter();
     const pb = getclient();
     const [userId, setuserId] = useState('');
     const [name, setName] = useState('');
@@ -31,6 +29,7 @@ export default function BasicInfo() {
         }
         
     }
+    
     const updateName = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
