@@ -2,7 +2,7 @@
 
 ***Tech stack: Next.js 13 + Tailwind + DaisyUI + PocketBase + AWS SES***
 
-BeeNote is a full stack web application for taking language learning notes, built with Next.js 13. It utilizes Next.js 13's latest [app directory](https://beta.nextjs.org/docs/routing/fundamentals) feature for routing.
+BeeNote is a full stack web application for taking language learning notes, built with Next.js 13. It utilizes Next.js 13's latest [app directory](https://nextjs.org/blog/next-13) feature for routing.
 
 <img src="screenshot.png" style="zoom:80%;" />
 
