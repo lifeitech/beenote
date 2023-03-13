@@ -12,10 +12,14 @@ export default function DeleteAccount() {
         setId(pb.authStore.model.id)
     }, [])
     const deleteAccount = async () => {
-        const res = await pb.collection('users').delete(id);
-        toast.success('You have successfully deleted your account')
-        pb.authStore.clear();
-        router.push('/');
+        try {
+            const res = await pb.collection('users').delete(id);
+            toast.success('You have successfully deleted your account')
+            pb.authStore.clear();
+            router.push('/'); 
+        } catch (error) {
+            toast.error(error.message);
+        }        
     }
 
     return (
