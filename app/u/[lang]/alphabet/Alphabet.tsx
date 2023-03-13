@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import getclient from '@utils/pb-client';
 import toast from 'react-hot-toast';
@@ -9,31 +8,24 @@ import { useTheme } from '@utils/Theme';
 export default function Alphabet({id, alphabet, pronun, audio}) {
   const theme = useTheme();
   const router = useRouter();
+
   const updateAlphabet = async (value:string) => {
     if (value != alphabet){
-
       const client = getclient();
       const res = await client.collection('alphabet').update(id, {alphabet: value});
-
       if (!res.code) {toast.success('Saved');}
       else {toast.error('Operation failed')}
-
       router.refresh();
-
     }
   }
 
-  const updatePronun = async (value) => {
+  const updatePronun = async (value:string) => {
     if (value != pronun){
-
       const client = getclient();
       const res = await client.collection('alphabet').update(id, {pronun: value});
-
       if (!res.code) {toast.success('Saved');}
       else {toast.error('Operation failed')}
-
       router.refresh();
-
     }
   }
 
@@ -42,14 +34,11 @@ export default function Alphabet({id, alphabet, pronun, audio}) {
     const res = await client.collection('alphabet').delete(id);
     if (res) {toast.success('Deleted');}
     else {toast.error('Operation failed')}
-
     router.refresh();
-
   }
 
   const audio_url =  `${process.env.NEXT_PUBLIC_POCKETBASE}/api/files/alphabet/${id}/${audio}`;
   const playaudio = () => {
-    // const audio = document.getElementById(`audio-${id}`);
     const audio = new Audio(audio_url);
     audio.play();
   }
@@ -69,8 +58,8 @@ export default function Alphabet({id, alphabet, pronun, audio}) {
 
       {audio? 
       <div onClick={playaudio} className="text-lg cursor-pointer" title='Play sound'>
-          {/* <audio id={`audio-${id}`} src={audio_url}></audio> */}
-          <i className="ri-volume-up-line"></i></div> 
+          <i className="ri-volume-up-line"></i>
+      </div> 
 
         : <i className={`ri-volume-up-line ${theme == 'bubblebee' ? 'text-gray-300' : 'text-gray-600'} text-lg`}></i>
         }
@@ -78,7 +67,6 @@ export default function Alphabet({id, alphabet, pronun, audio}) {
 
       <RecordAudio id={id} collection='alphabet'/>
     
-      
     </div>
     }
     </>

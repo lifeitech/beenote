@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import getclient from '@utils/pb-client';
@@ -34,15 +33,15 @@ export function CategoryTitle({title, lang}:{title:string, lang:string}) {
 
   const updateTitle = async (e:React.FormEvent<HTMLFormElement>) => {
     try {
-    const pb = getclient();
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const alphabets = await pb.collection('alphabet').getFullList(1, {filter: `lang="${lang}" && category="${title}"`});
-    alphabets.map(async item => {
-        const res = await pb.collection('alphabet').update(item.id, formData)  
-    });
-    toast.success('Success');
+      const pb = getclient();
+      e.preventDefault();
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      const alphabets = await pb.collection('alphabet').getFullList(1, {filter: `lang="${lang}" && category="${title}"`});
+      alphabets.map(async item => {
+          const res = await pb.collection('alphabet').update(item.id, formData)  
+      });
+      toast.success('Success');
     } catch (error) {
       toast.error('Something bad happened')
       }
