@@ -178,7 +178,7 @@ export default function SignUp() {
         </form>
       </div>
 
-      <div className="flex justify-center mt-10 mb-10">
+      <div className="flex justify-center mt-10 pb-10">
         <Link href="/login" className="link link-info">
           Already have an account? Log in here
         </Link>

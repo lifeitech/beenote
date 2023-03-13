@@ -3,24 +3,25 @@ import PocketBase from 'pocketbase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '@utils/Logo';
+import toast from 'react-hot-toast';
 
 export default function LogIn() {
 
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  const data = new FormData(event.currentTarget);
-  const email = data.get('email')!.toString();
-  const password = data.get('password')!.toString();
-
-  const client = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE);
-
-  const res = await client.collection('users').authWithPassword(email, password);
-
-  document.cookie = client.authStore.exportToCookie({ httpOnly: false });
-
-  router.push('/u');
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email')!.toString();
+    const password = data.get('password')!.toString();
+    try {
+      const client = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE);
+      const res = await client.collection('users').authWithPassword(email, password);
+      document.cookie = client.authStore.exportToCookie({ httpOnly: false });
+      router.push('/u');
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
