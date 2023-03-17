@@ -35,7 +35,7 @@ export default function EditorAI({ editor }: { editor: any }) {
     return () => document.removeEventListener("keydown", PromptShortcut);
   }, []);
 
-  const handleEnter = async (event: KeyboardEvent) => {
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key == "Enter") {
       event.preventDefault();
       generate(prompt);
