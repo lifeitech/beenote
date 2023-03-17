@@ -30,13 +30,13 @@ export default async function POST(req, res) {
         ],
         max_tokens: 3000,
       },
-      {
-        proxy: {
-          host: "127.0.0.1",
-          port: 65492,
-          protocol: "http",
-        },
-      }
+      // {
+      //   proxy: {
+      //     host: "127.0.0.1",
+      //     port: 65492,
+      //     protocol: "http",
+      //   },
+      // }
     );
     res.status(200).json({ result: completion.data.choices[0].message.content });
   } catch (error) {
