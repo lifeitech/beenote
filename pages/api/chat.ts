@@ -23,7 +23,6 @@ export default async function POST(req, res) {
     const completion = await openai.createChatCompletion(
       {
         model: "gpt-3.5-turbo",
-        // prompt: prompt,
         messages: [
           {role:"system", content:"You are a helpful assistant who helps with language learning."},
           {role:"user", content:prompt},
