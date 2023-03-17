@@ -2,7 +2,7 @@
 import getclient from "@utils/pb-client";
 import toast from 'react-hot-toast';
 
-export default function Save({editor, collection, id}:{editor:any, collection:string, id:string}) {
+export default function EditorSave({editor, collection, id}:{editor:any, collection:string, id:string}) {
 
     const save = async () => {        
         const client = getclient();

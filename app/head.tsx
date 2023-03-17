@@ -3,7 +3,7 @@ export default function Head() {
     <>
       <title>BeeNote</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta name="description" content="BeeNote" />
+      <meta name="description" content="Your online language learning notes" />
       <link rel="preload" href="/bg1.jpg" as="image" />
       <link rel="preload" href="/bg2.jpg" as="image" />
       <link rel="preload" href="/bg3.jpg" as="image" />

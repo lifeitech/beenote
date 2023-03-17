@@ -9,7 +9,9 @@ import TableHeader from '@tiptap/extension-table-header'
 import TableRow from '@tiptap/extension-table-row'
 import Image from '@tiptap/extension-image'
 import Youtube from '@tiptap/extension-youtube'
-import Save from './EditorSave';
+import Placeholder from '@tiptap/extension-placeholder'
+import EditorAI from './EditorAI';
+import EditorSave from './EditorSave';
 import 'remixicon/fonts/remixicon.css'
 
 const MenuBar = ({ editor }:{editor:Editor}) => {
@@ -191,9 +193,12 @@ const Tiptap = ({content, collection, id}:{content:JSON, collection:string, id:s
     TableCell,
     Image,
     Youtube.configure({controls: true,allowFullscreen: true, autoplay: false}),
+    Placeholder.configure({
+      placeholder: 'Press "Ctrl+/" for AI...',
+    }),
     ],
     editorProps: {
-    attributes: {class:'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl m-5 focus:outline-none'},
+    attributes: {class:'sm:max-w-[90%] lg:max-w-[70%] m-5 focus:outline-none selection:bg-secondary selection:text-secondary-content'},
             },
     content: content,
   })
@@ -204,6 +209,7 @@ const Tiptap = ({content, collection, id}:{content:JSON, collection:string, id:s
 
   return (
     <div className='relative'>
+      <EditorAI editor={editor}/>
       <div className=" sticky top-0 z-40 bg-base-100">
         <MenuBar editor={editor} />
         <div className="divider sticky top-10"></div>
@@ -211,11 +217,10 @@ const Tiptap = ({content, collection, id}:{content:JSON, collection:string, id:s
       <EditorContent editor={editor} />
 
       <div className='fixed right-20 bottom-10'>
-        <Save editor={editor} collection={collection} id={id}/>
+        <EditorSave editor={editor} collection={collection} id={id}/>
       </div>
     </div>
   )
 }
 
 export default Tiptap;
-

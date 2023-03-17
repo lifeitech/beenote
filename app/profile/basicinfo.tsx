@@ -51,7 +51,7 @@ export default function BasicInfo() {
 
             <form className='flex flex-row flex-wrap gap-2' method="post" onSubmit={updateAvatar}>
             <input type="file" name="avatar" required className="file-input file-input-bordered file-input-md max-w-xs" />
-            <button type="submit" className="btn">Change</button> 
+            <button type="submit" className="btn capitalize">Upload</button> 
             </form>
         </div>
 

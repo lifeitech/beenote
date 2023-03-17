@@ -1,6 +1,8 @@
 # BeeNote - Full stack CRUD application built with Next.js 13
 
-***Tech stack: Next.js 13 + Tailwind + DaisyUI + PocketBase + AWS SES***
+***New!*** ChatGPT is now integrated into this app. You can try AI assistant by going to the grammar note or custom note editor. 
+
+***Tech stack: Next.js 13 + Tailwind + DaisyUI + Tiptap + PocketBase + AWS SES + ChatGPT***
 
 BeeNote is a full stack web application for taking language learning notes, built with Next.js 13. It utilizes Next.js 13's latest [app directory](https://nextjs.org/blog/next-13) feature for routing.
 
@@ -10,7 +12,7 @@ It is an app that can perform all the CRUD (create, read, update and delete) ope
 
 For more details see this [blog post](https://lifei.tech/posts/beenote/). 
 
-## Frontend
+## Tech Stack
 
 - Next.js 13 further blurs the line between frontend and backend. It provides routing, server-side rendering, client-side navigation, image optimization and more.
 
@@ -18,13 +20,11 @@ For more details see this [blog post](https://lifei.tech/posts/beenote/).
 
 - [Tiptap](https://tiptap.dev/) is used to build the rich text editor.
 
-
-## Backend
-
 - [PocketBase](https://pocketbase.io/) for database and user authentication. Note that PocketBase is still in active development. Some functionalities like batch delete are still to be implemented.
 
 - [AWS SES](https://aws.amazon.com/ses/) for email sending.
 
+- [ChatGPT](https://platform.openai.com/docs/introduction) for AI writing.
 
 ## TODO
 

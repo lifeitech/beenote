@@ -13,6 +13,7 @@ export default async function LanguageLayout({children, params}: {children: Reac
   const custom_docs = await client.collection('custom').getFullList(1, {filter: `lang="${lang}"`});
   const words_docs = await client.collection('vocabulary_doc').getFullList(1, {filter: `lang="${lang}"`});
 
+
   return (
     <div className="drawer drawer-mobile z-50">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
