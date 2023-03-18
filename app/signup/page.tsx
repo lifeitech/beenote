@@ -43,6 +43,9 @@ export default function SignUp() {
     const data = new FormData(event.currentTarget);
     const blob = await fetch(`${process.env.NEXT_PUBLIC_POCKETBASE}/api/files/public/${process.env.NEXT_PUBLIC_DEFAULT_AVATAR}`).then(r => r.blob());
     data.append('avatar', blob);
+    data.append('point', '100');
+    data.append('quota', '100');
+
     try {
       const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE);
       const res = await pb.collection("users").create(data);
