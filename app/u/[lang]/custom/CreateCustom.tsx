@@ -33,7 +33,7 @@ export default function CreateCustom({lang}:any) {
                   {
                     "content": [
                       {
-                        "text": "create your custom notes here...",
+                        "text": "",
                         "type": "text"
                       }
                     ],
