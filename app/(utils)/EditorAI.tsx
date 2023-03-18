@@ -109,6 +109,7 @@ export default function EditorAI({ editor }: { editor: any }) {
 
           <input
             autoFocus
+            spellCheck
             type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
