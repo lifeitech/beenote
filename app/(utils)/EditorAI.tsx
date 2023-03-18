@@ -29,6 +29,7 @@ export default function EditorAI({ editor }: { editor: any }) {
       if (event.key == "Escape") {
         setShowInput(false);
         setPrompt("");
+        editor.commands.focus('end');
       }
     };
     document.addEventListener("keydown", PromptShortcut);
