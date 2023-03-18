@@ -7,6 +7,7 @@ export default function EditorAI({ editor }: { editor: any }) {
   const [showInput, setShowInput] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [waiting, setWaiting] = useState(false);
+  // const [out, setOut] = useState("");
   const [point, setPoint] = useState(0);
   const [quota, setQuota] = useState(0);
   const pb = getclient();
@@ -59,20 +60,34 @@ export default function EditorAI({ editor }: { editor: any }) {
     try {
       setWaiting(true);
       setPrompt("");
-      const res = await fetch("/api/chat", {
+      const res = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt: prompt }),
+        body: JSON.stringify({ prompt, }),
       });
-      const data = await res.json();
-      if (res.status !== 200) {
-        throw (
-          data.error || new Error(`Request failed with status ${res.status}`)
-        );
+      // const data = await res.json();
+      // if (res.status !== 200) {
+      //   throw (
+      //     data.error || new Error(`Request failed with status ${res.status}`)
+      //   );
+      // }
+      const data = res.body;
+      if (!data) {
+        return;
       }
-      editor.commands.insertContent(data.result.trim());
+      const reader = data.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        const chunkValue = decoder.decode(value);
+        // setOut((prev) => prev + chunkValue);
+        editor.commands.insertContent(chunkValue);
+      }
+      // editor.commands.insertContent(data.result.trim());
       editor.commands.insertContent('\n');
       setShowInput(false);
       setWaiting(false);
