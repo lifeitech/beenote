@@ -1,17 +1,25 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import getclient from "@utils/pb-client";
 import Swal from 'sweetalert2'
+
 
 export default function EditorAI({ editor }: { editor: any }) {
   const [showInput, setShowInput] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [waiting, setWaiting] = useState(false);
-  // const [out, setOut] = useState("");
   const [point, setPoint] = useState(0);
   const [quota, setQuota] = useState(0);
   const pb = getclient();
   const userId = pb.authStore.model.id;
+
+  const textRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToEnd = () => {
+    if (textRef.current !== null) {
+      textRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   
   useEffect(() => {
     (async () => {
@@ -67,12 +75,6 @@ export default function EditorAI({ editor }: { editor: any }) {
         },
         body: JSON.stringify({ prompt, }),
       });
-      // const data = await res.json();
-      // if (res.status !== 200) {
-      //   throw (
-      //     data.error || new Error(`Request failed with status ${res.status}`)
-      //   );
-      // }
       const data = res.body;
       if (!data) {
         return;
@@ -84,13 +86,13 @@ export default function EditorAI({ editor }: { editor: any }) {
         const { value, done: doneReading } = await reader.read();
         done = doneReading;
         const chunkValue = decoder.decode(value);
-        // setOut((prev) => prev + chunkValue);
         editor.commands.insertContent(chunkValue);
       }
       // editor.commands.insertContent(data.result.trim());
       editor.commands.insertContent('\n');
       setShowInput(false);
       setWaiting(false);
+      scrollToEnd();
       await pb.collection('users').update(userId, {point:point-1});
       setPoint(point => point - 1);
     } catch (error) {

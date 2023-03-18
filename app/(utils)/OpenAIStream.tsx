@@ -1,17 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
-import {
-  createParser,
-  ParsedEvent,
-  ReconnectInterval,
-} from "eventsource-parser";
-
-// import { HttpsProxyAgent } from 'https-proxy-agent';
-
-// const configuration = new Configuration({
-//   apiKey: process.env.OPENAI_API_KEY,
-// });
-
-// const openai = new OpenAIApi(configuration);
+import { createParser, ParsedEvent, ReconnectInterval } from "eventsource-parser";
 
 export type ChatGPTAgent = "user" | "system";
 
@@ -38,7 +25,6 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 
   let counter = 0;
 
-  // const proxyAgent = new HttpsProxyAgent(`http://127.0.0.1:${process.env.PROXY_PORT}`);
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
@@ -47,15 +33,6 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
     method: "POST",
     body: JSON.stringify(payload),
   });
-  // const res = await openai.createChatCompletion(payload,
-  //     {
-  //       proxy: {
-  //         host: "127.0.0.1",
-  //         port: 65492,
-  //         protocol: "http",
-  //       },
-  //     }
-  //   );
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -63,7 +40,6 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
       function onParse(event: ParsedEvent | ReconnectInterval) {
         if (event.type === "event") {
           const data = event.data;
-          // https://beta.openai.com/docs/api-reference/completions/create#completions/create-stream
           if (data === "[DONE]") {
             controller.close();
             return;

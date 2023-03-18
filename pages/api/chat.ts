@@ -32,7 +32,6 @@ export default async function POST(req, res) {
           {role:"user", content:prompt},
         ],
         max_tokens: 3000,
-        // stream: true,
       },
       {
         proxy: {
@@ -42,8 +41,7 @@ export default async function POST(req, res) {
         },
       }
     );
-    res.status(200).json({ result: completion.data });
-    // res.status(200).json({ result: completion.data.choices[0].message.content });
+    res.status(200).json({ result: completion.data.choices[0].message.content });
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.response.data);
