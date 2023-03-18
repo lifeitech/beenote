@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import getclient from "@utils/pb-client";
 import Swal from 'sweetalert2'
 
@@ -12,14 +12,6 @@ export default function EditorAI({ editor }: { editor: any }) {
   const [quota, setQuota] = useState(0);
   const pb = getclient();
   const userId = pb.authStore.model.id;
-
-  const textRef = useRef<null | HTMLDivElement>(null);
-
-  const scrollToEnd = () => {
-    if (textRef.current !== null) {
-      textRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   
   useEffect(() => {
     (async () => {
@@ -90,9 +82,10 @@ export default function EditorAI({ editor }: { editor: any }) {
       }
       // editor.commands.insertContent(data.result.trim());
       editor.commands.insertContent('\n');
+      editor.commands.scrollIntoView();
+      editor.commands.selectNodeBackward();
       setShowInput(false);
       setWaiting(false);
-      scrollToEnd();
       await pb.collection('users').update(userId, {point:point-1});
       setPoint(point => point - 1);
     } catch (error) {
