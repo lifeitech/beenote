@@ -1,9 +1,7 @@
-import { Configuration, OpenAIApi } from "openai";
-// import { NextRequest, NextResponse } from "next/server";
+// This API route is used for local development only. 
+// OpenAI is blocked in China, so proxy server has to be set up (with axios).
 
-// export const config = {
-//   runtime: "edge",
-// }
+import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -36,7 +34,7 @@ export default async function POST(req, res) {
       {
         proxy: {
           host: "127.0.0.1",
-          port: 65492,
+          port: Number(process.env.PROXY_PORT),
           protocol: "http",
         },
       }

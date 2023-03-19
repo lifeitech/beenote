@@ -1,3 +1,7 @@
+// OPenAI API with data streaming
+// reference: https://vercel.com/blog/gpt-3-app-next-js-vercel-edge-functions
+// credit: Hassan El Mghari
+
 import { OpenAIStream, OpenAIStreamPayload } from "@utils/OpenAIStream";
 
 export const config = {

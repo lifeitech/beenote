@@ -1,3 +1,7 @@
+// OPenAI API with data streaming
+// reference: https://vercel.com/blog/gpt-3-app-next-js-vercel-edge-functions
+// credit: Hassan El Mghari
+
 import { createParser, ParsedEvent, ReconnectInterval } from "eventsource-parser";
 
 export type ChatGPTAgent = "user" | "system";
