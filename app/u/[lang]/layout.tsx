@@ -59,6 +59,8 @@ export default async function LanguageLayout({children, params}: {children: Reac
             })}      
           </ul> }
 
+          <li><Link href={`/u/${lang}/speaking`}><i className="ri-voiceprint-fill"></i> Speaking</Link></li>
+
           <li><Link href={`/u/${lang}/custom`}><i className="ri-user-star-fill"></i> Custom</Link></li>
 
           {custom_docs.length == 0? null : 

@@ -42,7 +42,7 @@ export default function RecordAudio({id, collection}:{id:string, collection:stri
             <span className="inline-flex rounded-full h-3 w-3 bg-secondary-focus"></span>
         </span> : null}
          <div className="text-xl cursor-pointer" onClick={record}>
-            <i className={`ri-mic-2-line`} title='Record Audio'></i>
+            <i className="ri-mic-2-line" title='Record Audio'></i>
         </div>
         </div>
         

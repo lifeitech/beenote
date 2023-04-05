@@ -7,6 +7,7 @@ export default async function Home({ params }: any) {
     <Block link={`/u/${lang}/alphabet`}>Alphabet</Block>
     <Block link={`/u/${lang}/vocabulary`}>Vocabulary</Block>
     <Block link={`/u/${lang}/grammar`}>Grammar</Block>
+    <Block link={`/u/${lang}/speaking`}>Speaking</Block>
     <Block link={`/u/${lang}/custom`}>Custom</Block>
     </div>
     )

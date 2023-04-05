@@ -48,7 +48,8 @@ export default function SignUp() {
 
     try {
       const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE);
-      const res = await pb.collection("users").create(data);
+      await pb.collection("users").create(data);
+      await pb.collection("users").requestVerification(email.text);
       toast.success("Successfully created a new account. You can login now.", {
         duration: 5000,
       });

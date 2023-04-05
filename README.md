@@ -20,7 +20,7 @@ BeeNote is a web application for taking language learning notes.
 - [ChatGPT](https://platform.openai.com/docs/introduction) for AI writing.
 - Dark theme support with [React's useContext hook](https://react.dev/reference/react/useContext).
 
-For more details see this [blog post](https://lifei.tech/posts/beenote/). 
+For more details see this [blog post](https://lifeitech.github.io/posts/beenote/). 
 
 ## TODO
 
