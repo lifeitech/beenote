@@ -1,5 +1,5 @@
 // This API route is used for local development only. 
-// OpenAI is blocked in China, so proxy server has to be set up (with axios).
+// OpenAI is blocked in China, so proxy server has to be set up with axios.
 
 import { Configuration, OpenAIApi } from "openai";
 

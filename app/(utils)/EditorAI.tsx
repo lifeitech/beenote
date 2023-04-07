@@ -61,7 +61,7 @@ export default function EditorAI({ editor }: { editor: any }) {
     try {
       setWaiting(true);
       setPrompt("");
-      const res = await fetch("/api/chat2", {
+      const res = await fetch("/api/write", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

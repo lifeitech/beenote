@@ -5,33 +5,6 @@ import getclient from "@utils/pb-client";
 import Image from "next/image";
 import toast from "react-hot-toast";
 
-import { Readable } from "stream";
-
-const iso6391 = {
-  english: "en",
-  swedish: "sv",
-  norwegian: "no",
-  finnish: "fi",
-  danish: "da",
-  german: "de",
-  dutch: "nl",
-  french: "fr",
-  italian: "it",
-  spanish: "es",
-  portuguese: "pt",
-  croatian: "hr",
-  ukrainian: "uk",
-  polish: "pl",
-  russian: "ru",
-  japanese: "ja",
-  korean: "ko",
-  chinese: "zh",
-  cantonese: "zh",
-  thai: "th",
-  vietnamese: "vi",
-  indonesian: "id",
-  malaysian: "ms",
-};
 
 export default function Home({ params }: any) {
   const [recording, setRecording] = useState(false);
@@ -51,12 +24,9 @@ export default function Home({ params }: any) {
       setUserId(pb.authStore.model.id);
       setAvatarFilename(pb.authStore.model.avatar);
       (async () => {
-        const record = await pb
-          .collection("speaking")
-          .getFullList({ filter: `lang="${lang}"` });
+        const record = await pb.collection("speaking").getFullList({ filter: `lang="${lang}"` });
         setChats(record[0].chats.chats);
         setRecordId(record[0].id);
-        console.log(chats);
       })();
     }
   }, []);
@@ -81,8 +51,8 @@ export default function Home({ params }: any) {
         const blob = new Blob(chunks, { type: "audio/webm" });
         chunks = []; 
 
-        // audio to text 
-        const res_whisper = await fetch('/api/audio-to-text', {
+        // speech to text with OpenAI Whisper API
+        const res_whisper = await fetch('/api/speech-to-text', {
             method: "POST",
             headers: {
               "Content-Type": "audio/webm",
@@ -97,7 +67,7 @@ export default function Home({ params }: any) {
         setChats([...chats, { role: "user", content: transcription }]);
 
         // return next chat given the current message and all chat history
-        const res_chat = await fetch("/api/chat3", {
+        const res_chat = await fetch("/api/talk", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -131,9 +101,7 @@ export default function Home({ params }: any) {
 
   const save = async () => {
     try {
-      await pb
-        .collection("speaking")
-        .update(recordId, { chats: JSON.stringify({ chats: chats }) });
+      await pb.collection("speaking").update(recordId, { chats: JSON.stringify({ chats: chats }) });
       toast.success("Saved");
     } catch (error) {
       toast.error("An error occurred");
@@ -143,15 +111,15 @@ export default function Home({ params }: any) {
   return (
     <>
       <h2 className="text-2xl font-bold ml-3 lg:ml-5">
-        Practice Speaking with ChatGPT
+        Practice Speaking with ChatGPT <span className="text-sm text-red-500">Under construction</span>
       </h2>
-      <p className="text-red-500">Under construction</p>
 
       {/* Chat Room */}
       <div className="relative overflow-auto m-3 lg:m-5 p-5 h-3/4 rounded-lg border-2 border-base-300 flex flex-col gap-2 max-w-4xl">
-        {chats.map((item) => {
+        {chats.map((item, index) => {
           return (
             <div
+              key={index}
               className={`chat ${
                 item.role == "assistant" ? "chat-start" : "chat-end"
               }`}
@@ -204,7 +172,7 @@ export default function Home({ params }: any) {
 
         <div className="text-3xl cursor-pointer" id={`stop-speaking`}>
           {recording ? (
-            <i className="ri-stop-circle-line text-red-500" title="Stop"></i>
+            <i className="ri-stop-circle-line text-red-500 p-6 rounded-full bg-base-200" title="Stop"></i>
           ) : null}
         </div>
       </div>
