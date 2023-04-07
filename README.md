@@ -4,7 +4,7 @@
 
 ***Tech stack: Next.js 13 + Tailwind + DaisyUI + Tiptap + PocketBase + AWS SES + ChatGPT***
 
-BeeNote is a web application for taking language learning notes. 
+BeeNote is a web application for language learning. 
 
 <img src="screenshot.png" style="zoom:80%;" />
 
@@ -18,7 +18,7 @@ BeeNote is a web application for taking language learning notes.
 - [PocketBase](https://pocketbase.io/) for database and user authentication.
 - [AWS SES](https://aws.amazon.com/ses/) for email sending.
 - [ChatGPT](https://platform.openai.com/docs/introduction) for AI writing.
-- Dark theme support with [React's useContext hook](https://react.dev/reference/react/useContext).
+- Dark theme support.
 
 For more details see this [blog post](https://lifeitech.github.io/posts/beenote/). 
 
