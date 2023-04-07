@@ -6,25 +6,47 @@ import toast from "react-hot-toast";
 import LangIcon from "@utils/LangIcon";
 
 const languages = [
+  // north america
   "english",
+  // northern europe
   "swedish",
   "norwegian",
   "finnish",
   "danish",
+  // western europe
   "german",
   "dutch",
   "french",
-  "italian",
+  // southern europe
   "spanish",
   "portuguese",
-  "croatian",
-  "ukrainian",
+  "italian",
+  // central & eastern europe
+  "czech",
+  "slovak",
   "polish",
+  "hungarian",
+  "slovene",
+  "croatian",
+  "bosnian",
+  "serbian",
+  "romanian",
+  "bulgarian",
+  "albanian",
+  "ukrainian", 
   "russian",
+  "greek",
+  "turkish",
+  "georgian",
+  // middle east,
+  "persian",
+  "arabic",
+  // asia
   "japanese",
   "korean",
   "chinese",
   "cantonese",
+  "hindi",
   "thai",
   "vietnamese",
   "indonesian",
@@ -80,6 +102,7 @@ export default function CreateLanguage({ created }: { created: string[] }) {
       <input type="checkbox" id="modal-create-lang" className="modal-toggle" />
       <label htmlFor="modal-create-lang" className="modal cursor-pointer">
         <label className="modal-box relative" htmlFor="">
+          <p>*This is not an inclusive list of all human languages on earth.</p>
           {new_list.map((item) => (
             <div
               key={item}
