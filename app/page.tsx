@@ -12,8 +12,8 @@ export default function Home() {
     <div className={`relative hero min-h-screen bg-base-200 ${styles.hero}`}>
       <div className="hero-content text-center">
         <div className="max-w-3xl">
-          <h1 className="text-5xl font-bold text-base-100">BeeNote - Your Next Generation Language Notebook</h1>
-          <p className="py-6 text-2xl text-base-100">Carry the world with you. Never worry about losing your notes.</p>
+          <h1 className="text-5xl font-bold text-base-100">BeeNote - Your AI-powered Language Learning App</h1>
+          <p className="py-6 text-2xl text-base-100">Learn foreign languages faster. Save your notes in one place.</p>
           
           <div className="flex justify-center space-x-4">
             <Link href='/login'><button className="btn btn-primary">Log In</button></Link>
