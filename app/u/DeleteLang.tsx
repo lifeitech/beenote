@@ -21,7 +21,7 @@ export default function DeleteLang({id}:{id:string}) {
 
     return (
       <div>
-        <label htmlFor={`del-language-modal-${id}`} className="btn btn-block">Delete</label>
+        <label htmlFor={`del-language-modal-${id}`} className="btn btn-wide">Delete</label>
         <input type="checkbox" id={`del-language-modal-${id}`} className="modal-toggle" />
         <label htmlFor={`del-language-modal-${id}`} className="modal cursor-pointer">
         <label className="modal-box relative" htmlFor="">

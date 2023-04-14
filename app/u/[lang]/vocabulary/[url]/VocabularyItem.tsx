@@ -77,17 +77,20 @@ export default function VocabularyItem({id, word, part, pronun, meaning, audio, 
 }
 
     return (
-    <div className="flex flex-row max-w-max text-center rounded-r-lg border-l-4 border-l-transparent hover:box-border hover:border-l-4 hover:bg-base-200 hover:border-l-secondary-focus py-2 pr-6">
-        <div className="font-bold w-32" contentEditable="true" onBlur={(e)=>updateWord(e.currentTarget.textContent)}>{word}</div>
-        <div className="divider divider-horizontal p-0 m-0"></div>
-        <div className="w-12" contentEditable="true" onBlur={(e)=>updatePart(e.currentTarget.textContent)}>{part}</div>
-        <div className="divider divider-horizontal p-0 m-0"></div>
-        <div className="w-32" contentEditable="true" onBlur={(e)=>updatePronun(e.currentTarget.textContent)}>{pronun}</div>
-        <div className="divider divider-horizontal p-0 m-0"></div>
-        <div className="w-48" contentEditable="true" onBlur={(e)=>updateMeaning(e.currentTarget.textContent)}>{meaning}</div>
-        <div className="divider divider-horizontal p-0 m-0"></div>
+        <div className='relative rounded-xl border-2 py-2 px-2 flex flex-row gap-2 items-center'>
+        <div className='flex flex-col gap-2'>
+        <div className='flex flex-row gap-2 items-center'>
+        <div className="font-bold text-3xl" contentEditable="true" onBlur={(e)=>updateWord(e.currentTarget.textContent)}>{word}</div>
 
-        <div className="flex flex-row gap-2 justify-center w-20">
+        <div className={`text-sm ${theme == 'bubblebee' ? 'text-gray-300' : 'text-gray-400'}`} contentEditable="true" onBlur={(e)=>updatePart(e.currentTarget.textContent)}>{part}</div>
+        </div>
+
+        {/* <div className="w-32" contentEditable="true" onBlur={(e)=>updatePronun(e.currentTarget.textContent)}>{pronun}</div> */}
+
+        <div className="pl-2" contentEditable="true" onBlur={(e)=>updateMeaning(e.currentTarget.textContent)}>{meaning}</div>
+        </div>
+
+        <div className="flex flex-row gap-2 justify-center ml-auto">
           {audio? 
           <div onClick={playAudio} className="cursor-pointer">
               {/* <audio id={`audio-${id}`} src={audio_url}></audio> */}
@@ -99,32 +102,32 @@ export default function VocabularyItem({id, word, part, pronun, meaning, audio, 
           <RecordAudio id={id} collection='vocabulary'/>
         </div>
 
-        <div className="divider divider-horizontal p-0 m-0"></div>
-
-        <div className="w-32 flex flex-row items-center justify-center gap-2">
-          
-          {image? 
-          <div className='relative cursor-pointer'>
-          <i onMouseOver={()=>setHovering(true)} onMouseOut={()=>setHovering(false)} className={`ri-image-fill text-xl`}></i>
-          {hovering && 
-          <div className='absolute -left-[350px] z-10'>
-            <Image src={image_url} width={300} height={300} className="object-none overflow-visible" alt="visualization of this word"></Image>
-          </div>}
-          </div>
-          :
-          <i className={`ri-image-fill ${theme == 'bubblebee' ? 'text-gray-300' : 'text-gray-600'} text-xl`}></i>
-        }
-
-          <label htmlFor={`img-input-${id}`} title='Upload Image' className='cursor-pointer'><i className="ri-upload-2-fill"></i></label>
-          <form method="post" onChange={uploadImage} className='hidden'>
-            <input id={`img-input-${id}`} type="file" name="image" required/>
-          </form>
+        <div title='delete' className='absolute right-1 bottom-0 cursor-pointer text-gray-400 hover:text-error' onClick={deleteword}><i className="ri-close-circle-line"></i></div>
         </div>
-
-        <div className="divider divider-horizontal p-0 m-0"></div>
-
-        <div title='delete' className='cursor-pointer ml-2 text-gray-400 hover:text-error' onClick={deleteword}><i className="ri-close-circle-line"></i></div>
-    </div>
 
     )
 }
+
+
+
+{/* <div className="w-32 flex flex-row items-center justify-center gap-2">
+  
+  {image? 
+  <div className='relative cursor-pointer'>
+  <i onMouseOver={()=>setHovering(true)} onMouseOut={()=>setHovering(false)} className={`ri-image-fill text-xl`}></i>
+  {hovering && 
+  <div className='absolute -left-[350px] z-10'>
+    <Image src={image_url} width={300} height={300} className="object-none overflow-visible" alt="visualization of this word"></Image>
+  </div>}
+  </div>
+  :
+  <i className={`ri-image-fill ${theme == 'bubblebee' ? 'text-gray-300' : 'text-gray-600'} text-xl`}></i>
+}
+
+  <label htmlFor={`img-input-${id}`} title='Upload Image' className='cursor-pointer'><i className="ri-upload-2-fill"></i></label>
+  <form method="post" onChange={uploadImage} className='hidden'>
+    <input id={`img-input-${id}`} type="file" name="image" required/>
+  </form>
+</div> */}
+
+{/* <div title='delete' className='cursor-pointer ml-2 text-gray-400 hover:text-error' onClick={deleteword}><i className="ri-close-circle-line"></i></div> */}

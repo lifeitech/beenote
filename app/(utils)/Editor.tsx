@@ -198,7 +198,7 @@ const Tiptap = ({content, collection, id}:{content:JSON, collection:string, id:s
     }),
     ],
     editorProps: {
-    attributes: {class:'sm:max-w-[90%] lg:max-w-[70%] m-5 focus:outline-none selection:bg-secondary selection:text-secondary-content'},
+    attributes: {class:'sm:max-w-[90%] lg:max-w-[70%] m-5 text-lg focus:outline-none selection:bg-secondary selection:text-secondary-content'},
             },
     content: content,
   })

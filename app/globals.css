@@ -113,3 +113,17 @@ a {
   pointer-events: none;
 }
 
+
+.appearfromBottom {
+  animation-name: fadeinBottom;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeinBottom {
+  from {
+      opacity: 0;
+      transform: translateY(30%);
+  }
+  to { opacity: 1 }
+}

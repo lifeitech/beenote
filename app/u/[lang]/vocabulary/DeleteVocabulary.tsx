@@ -16,7 +16,7 @@ export default function DeleteVocabulary({id}:{id:string}) {
 
     return (
       <div>
-        <label htmlFor={`del-vocabulary-note-modal-${id}`} className="btn btn-block">Delete</label>
+        <label htmlFor={`del-vocabulary-note-modal-${id}`} className="btn btn-circle"><i className="ri-delete-bin-6-line"></i></label>
         <input type="checkbox" id={`del-vocabulary-note-modal-${id}`} className="modal-toggle" />
         <label htmlFor={`del-vocabulary-note-modal-${id}`} className="modal cursor-pointer">
         <label className="modal-box relative" htmlFor="">

@@ -11,11 +11,11 @@ export default async function Home({ params }: any) {
 
   return (
     <div>
-    <div className="text-4xl p-5">Vocabulary Notebooks</div>
-    <div className="flex flex-wrap gap-10 m-5">
+    <div className="text-4xl p-5">Vocabulary Collections</div>
+    <div className="flex flex-col gap-10 m-5">
     {words_docs.map(item => {
               return (
-                <div key={item.id} className='flex flex-col gap-10 items-stretch'>
+                <div key={item.id} className='flex flex-row gap-5 items-center'>
                 <Block key={item.id} link={`/u/${lang}/vocabulary/${item.url}`}>{item.title}</Block>
                 <DeleteVocabulary id={item.id}/>
                 </div>

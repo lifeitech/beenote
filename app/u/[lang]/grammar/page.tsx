@@ -12,12 +12,12 @@ export default async function Home({ params }: any) {
 
   return (
     <div>
-    <div className="text-4xl p-5">Grammar Notebooks</div>
+    <div className="text-4xl p-5">Grammar Collections</div>
 
-    <div className="flex flex-wrap gap-10 m-5">
+    <div className="flex flex-col gap-10 m-5">
       {grammar_docs.map(item => {
         return (
-        <div key={item.id} className="flex flex-col gap-10 items-stretch">
+        <div key={item.id} className="flex flex-row gap-5 items-center">
           <Block key={item.id} link={`/u/${lang}/grammar/${item.url}`}>
             {item.title}
             </Block>

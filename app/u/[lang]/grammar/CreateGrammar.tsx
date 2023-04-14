@@ -57,8 +57,8 @@ export default function CreateGrammar({lang}:{lang:string}) {
     <>
     <label htmlFor="create-grammar" className="cursor-pointer">
       <div className="relative">
-        <div className="absolute w-56 h-56 rounded-lg -right-4 -bottom-4  bg-accent z-0"></div>
-        <div className="flex flex-col relative items-center justify-center box-border w-56 h-56 p-4 border-4 rounded-lg border-slate-800 bg-primary z-10 active:translate-x-1 active:translate-y-1">
+        {/* <div className="absolute w-56 h-56 rounded-lg -right-4 -bottom-4  bg-accent z-0"></div> */}
+        <div className="flex flex-row gap-2 relative items-center justify-center box-border w-72 h-20 p-4 border-4 rounded-full border-slate-800 bg-primary z-10 active:translate-x-1 active:translate-y-1">
           <i className="ri-add-line text-3xl"></i><span className="text-2xl">Create</span>
         </div>
       </div>

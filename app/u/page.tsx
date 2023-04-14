@@ -18,18 +18,18 @@ export default async function Home() {
     <div className="min-h-screen">
     <div className="text-center">
     <h1 className="text-3xl font-bold py-10">Language Notebooks</h1>
-      <div className="flex flex-wrap gap-10 p-10">
+      <div className="flex flex-col gap-5 p-10 items-center">
         {res.map(item => {
           // return <Lang key={item.id} lang={item.lang} name={item.name}/>;
           return (
-          <div key={item.id} className="flex flex-col gap-10 items-stretch">
+          <div key={item.id} className="flex flex-col gap-10 items-center">
           <Block key={item.id} link={`/u/${item.lang}`}>
-                    <div className="flex flex-col gap-2 items-center">
-                    <LangIcon lang={item.lang} size={50}/>
+                    <div className="flex flex-row gap-5 items-center">
+                    <LangIcon lang={item.lang} size={32}/>
                     {item.name}
                     </div>
             </Block>
-            <DeleteLang key={item.id} id={item.id}/>
+            {/* <DeleteLang key={item.id} id={item.id}/> */}
             </div>
                   )
         })}

@@ -13,10 +13,10 @@ export default function CreateWord({lang, url}:{lang:string, url:string}) {
             userId: userId,
             lang: lang,
             url: url,
-            word:'',
-            pronun:'',
-            part:'',
-            meaning:'',
+            word:'Word',
+            pronun:'pronunciation',
+            part:'part',
+            meaning:'meaning',
         })
         router.refresh();
       }

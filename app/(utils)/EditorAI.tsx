@@ -99,7 +99,7 @@ export default function EditorAI({ editor }: { editor: any }) {
   return (
     <div className="absolute -bottom-20 left-5 z-20">
       {showInput ? (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 appearfromBottom">
         <div className="relative flex flex-row items-center">
           {waiting?
           <div className="ai-spinner absolute left-3 bottom-2">
@@ -128,9 +128,9 @@ export default function EditorAI({ editor }: { editor: any }) {
           </div>
         </div>
         <div className="flex flex-row gap-2">
-        <progress className="progress progress-secondary w-[750px]" value={quota-point} max={quota}></progress>
-        <div className="tooltip tooltip-bottom" data-tip="free AI responses used">
-          <p className="text-sm ">{quota-point}/{quota}</p>
+        <progress className="progress progress-secondary w-[750px]" value={point} max={quota}></progress>
+        <div className="tooltip tooltip-bottom" data-tip="💎Diamonds left">
+          <p className="text-sm ">{point}/{quota}</p>
         </div>
         </div>
         </div>
