@@ -28,6 +28,7 @@
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
     "eventsource-parser": "^0.1.0",
+    "framer-motion": "^10.12.2",
     "next": "^13.2.3",
     "openai": "^3.2.1",
     "pocketbase": "^0.12.1",
