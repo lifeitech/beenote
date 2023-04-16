@@ -1,7 +1,7 @@
 import getclient from '@utils/pb-server';
-import CreateVocabulary from './CreateVocabulary';
+import CreateCollection from './CreateCollection';
 import Block from '@utils/Block';
-import DeleteVocabulary from './DeleteVocabulary';
+import DeleteCollection from './DeleteCollection';
 
 export default async function Home({ params }: any) {
   
@@ -17,11 +17,11 @@ export default async function Home({ params }: any) {
               return (
                 <div key={item.id} className='flex flex-row gap-5 items-center'>
                 <Block key={item.id} link={`/u/${lang}/vocabulary/${item.url}`}>{item.title}</Block>
-                <DeleteVocabulary id={item.id}/>
+                <DeleteCollection id={item.id}/>
                 </div>
               ) 
         })} 
-    <CreateVocabulary lang={lang}/> 
+    <CreateCollection lang={lang}/> 
     </div>
     </div>
     )

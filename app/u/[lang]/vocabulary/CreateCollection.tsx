@@ -5,7 +5,7 @@ import getclient from '@utils/pb-client';
 import toast from 'react-hot-toast';
 import isValid from '@utils/validateURL';
 
-export default function CreateVocabulary({lang}) {
+export default function CreateCollection({lang}) {
     const [title, setTitle] = useState('');
     const [url, setUrl] = useState('');
     const router = useRouter();

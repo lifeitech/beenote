@@ -13,7 +13,7 @@ const maketoast = (res) => {
   else {toast.error('Operation failed')}
 }
 
-export default function VocabularyItem({id, word, part, meaning, audio, image}) {
+export default function VocabularyItem({id, word, part, meaning, audio, image, onclick}) {
     // const [doubleclicked, setDoubleclicked] = useState(false);
     const theme = useTheme();
     const router = useRouter();
@@ -69,26 +69,28 @@ export default function VocabularyItem({id, word, part, meaning, audio, image}) 
 // }
 
     return (
-        <motion.div className='relative rounded-xl border-2 border-b-4 py-2 px-2 flex flex-row gap-2 items-center' 
+        <motion.div className='relative cursor-pointer rounded-xl border-2 border-b-4 p-4 flex flex-row gap-2 items-center' 
+        layoutId={id}
+        onClick={onclick}
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
         >
         <div className='flex flex-col gap-2'>
         <div className='flex flex-row gap-2 items-center'>
-        <div className="font-bold text-3xl" contentEditable="true" onBlur={(e)=>updateWord(e.currentTarget.textContent)}>{word}</div>
+        <div className="font-bold text-3xl z-10" contentEditable="true" onClick={(e)=>e.stopPropagation()} onBlur={(e)=>updateWord(e.currentTarget.textContent)}>{word}</div>
 
-        <div className={`text-sm ${theme == 'bubblebee' ? 'text-gray-300' : 'text-gray-400'}`} contentEditable="true" onBlur={(e)=>updatePart(e.currentTarget.textContent)}>{part}</div>
+        <div className={`text-sm ${theme == 'bubblebee' ? 'text-gray-300' : 'text-gray-400'}`} contentEditable="true" onClick={(e)=>e.stopPropagation()} onBlur={(e)=>updatePart(e.currentTarget.textContent)}>{part}</div>
         </div>
 
-        <div className="pl-2" contentEditable="true" onBlur={(e)=>updateMeaning(e.currentTarget.textContent)}>{meaning}</div>
+        <div className="pl-2 z-10" contentEditable="true" onClick={(e)=>e.stopPropagation()} onBlur={(e)=>updateMeaning(e.currentTarget.textContent)}>{meaning}</div>
         </div>
 
-        <div className="flex flex-row gap-2 justify-center ml-auto">
+        <div onClick={(e)=>e.stopPropagation()} className="flex flex-row gap-2 ml-auto z-10">
           {audio? 
           <div onClick={playAudio} className="cursor-pointer">
               {/* <audio id={`audio-${id}`} src={audio_url}></audio> */}
-              <i className="ri-volume-up-line"></i>
+              <i className="ri-volume-up-line text-xl"></i>
           </div> 
           : 
           <i className={`ri-volume-up-line ${theme == 'bubblebee' ? 'text-gray-300' : 'text-gray-600'} text-xl`}></i>
@@ -96,7 +98,9 @@ export default function VocabularyItem({id, word, part, meaning, audio, image}) 
           <RecordAudio id={id} collection='vocabulary'/>
         </div>
 
-        <div title='delete' className='absolute right-1 bottom-0 cursor-pointer text-gray-400 hover:text-error z-30' onClick={deleteword}><i className="ri-close-circle-line"></i></div>
+        <div title="Delete" onClick={(e)=>{e.stopPropagation();deleteword()}} className='absolute right-1 bottom-0 text-lg cursor-pointer text-gray-400 hover:text-error z-10' >       
+          <i className="ri-close-circle-line"></i>
+        </div>
         </motion.div>
 
     )

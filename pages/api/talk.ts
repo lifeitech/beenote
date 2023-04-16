@@ -9,7 +9,7 @@ export const config = {
 };
 
 const sysPrompt = `
-You are a helpful assistant. You are helping with user's language learning. The user is practicing speaking with you. User's inputs sent to you are transcribed. The inputs may contain errors and imperfections. When you are unable to understand what the user said, ask the user to say again.
+You are a helpful assistant. You are helping with user's language learning.
 `
 
 const handler = async (req: Request): Promise<Response> => {

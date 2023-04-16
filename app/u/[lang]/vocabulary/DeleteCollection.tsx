@@ -3,9 +3,9 @@ import { useRouter } from 'next/navigation';
 import getclient from '@utils/pb-client';
 import toast from 'react-hot-toast';
 
-export default function DeleteVocabulary({id}:{id:string}) {
+export default function DeleteCollection({id}:{id:string}) {
   const router = useRouter();
-  const deleteVocabulary = async () => {
+  const deleteCollection = async () => {
     const client = getclient();
     const res = await client.collection('vocabulary_doc').delete(id);
     // TODO: batch delete all words in the vocabulary table
@@ -22,7 +22,7 @@ export default function DeleteVocabulary({id}:{id:string}) {
         <label className="modal-box relative" htmlFor="">
                 <h3 className="font-bold text-lg">Are you sure you want to delete this vocabulary notebook?</h3>
                 <div className="modal-action flex flex-row gap-5 items-baseline justify-center">
-                <label htmlFor={`del-vocabulary-note-modal-${id}`} onClick={deleteVocabulary} className="btn btn-error w-28 modal-action justify-center">Yes</label>
+                <label htmlFor={`del-vocabulary-note-modal-${id}`} onClick={deleteCollection} className="btn btn-error w-28 modal-action justify-center">Yes</label>
                 <label htmlFor={`del-vocabulary-note-modal-${id}`} className="btn w-28 modal-action justify-center">No</label>
                 </div>
         </label>
