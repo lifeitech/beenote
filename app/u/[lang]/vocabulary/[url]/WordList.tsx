@@ -1,14 +1,11 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, LayoutGroup } from "framer-motion";
 import VocabularyItem from "./VocabularyItem";
 import Context from "./Context";
 
 export default function WordList({ words }: { words: Array<any> }) {
   const [selectedId, setSelectedId] = useState(null);
-//   const handleClose = useCallback(() => {
-//     setSelectedId(false);
-//   }, []);
 
   return (
     <div className="relative">
@@ -32,7 +29,7 @@ export default function WordList({ words }: { words: Array<any> }) {
 
     <AnimatePresence>
         {selectedId && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 z-50">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-h-80 z-50">
           <Context id={selectedId} key="modal" close={() => setSelectedId(null)} />
           </div>
         )}

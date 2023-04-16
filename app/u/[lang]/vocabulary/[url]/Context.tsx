@@ -111,7 +111,7 @@ export default function Context({id, close}) {
         {chats.map((item, index) => {
           return (
             <div key={index} className={`m-2 p-2 rounded-lg ${item.role == "user" ? "bg-success text-success-content" : "bg-base-200"}`}>
-              <div className="">{item.content}</div>
+              <p className="whitespace-pre-wrap">{item.content}</p>
             </div>
           );
         })}
