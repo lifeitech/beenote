@@ -33,14 +33,16 @@ export default function Context({id, close}) {
     const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key == "Enter") {
           event.preventDefault();
-          setChats([...chats, { role: "user", content: question }]);
-          generate(chats);
+          const newchats = [...chats, { role: "user", content: question }];
+          setChats(newchats);
+          generate(newchats);
         }
       };
 
     const handleClick = (prompt)=> {
-      setChats([...chats, { role: "user", content: prompt }])
-      generate(chats);
+      const newchats = [...chats, { role: "user", content: prompt }];
+      setChats(newchats);
+      generate(newchats);
     }
 
     const generate = async (chats) => {
@@ -65,8 +67,9 @@ export default function Context({id, close}) {
         done = doneReading;
         const chunkValue = decoder.decode(value);
         setReply((prev) => prev + chunkValue);
+        setChats([...chats, { role: "assistant", content: reply }]);
       }
-      setChats([...chats, { role: "assistant", content: reply }]);
+      // setChats([...chats, { role: "assistant", content: reply }]);
     }
 
     const save = async () => {
