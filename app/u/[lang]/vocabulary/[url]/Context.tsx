@@ -67,9 +67,9 @@ export default function Context({id, close}) {
         done = doneReading;
         const chunkValue = decoder.decode(value);
         setReply((prev) => prev + chunkValue);
-        setChats([...chats, { role: "assistant", content: reply }]);
+        // setChats([...chats, { role: "assistant", content: reply }]);
       }
-      // setChats([...chats, { role: "assistant", content: reply }]);
+      setChats([...chats, { role: "assistant", content: reply }]);
     }
 
     const save = async () => {
