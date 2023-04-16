@@ -6,10 +6,10 @@ import toast from "react-hot-toast";
 
 export default function Context({id, close}) {
     const [lang, setLang] = useState("");
-    const [word, setWord] = useState('');
-    const [meaning, setMeaning] = useState('');
+    const [word, setWord] = useState("");
+    const [meaning, setMeaning] = useState("");
     const [chats, setChats] = useState([]);
-    const [question, setQuestion] = useState('');
+    const [question, setQuestion] = useState("");
     const [reply, setReply] = useState("");
 
     const pb = getclient();
@@ -97,9 +97,9 @@ export default function Context({id, close}) {
           </div>
 
           <div>
-            {examples.map(item => {
+            {examples.map((item, index) => {
               return (
-                <div onClick={()=>handleClick(item.prompt)} className="mx-1 p-1 badge cursor-pointer">{item.text}</div>
+                <div key={index} onClick={()=>handleClick(item.prompt)} className="mx-1 p-1 badge cursor-pointer">{item.text}</div>
               )
             })}
           </div>
