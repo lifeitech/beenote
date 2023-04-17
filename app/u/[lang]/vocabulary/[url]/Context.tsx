@@ -10,7 +10,7 @@ export default function Context({id, close}) {
     const [meaning, setMeaning] = useState("");
     const [chats, setChats] = useState([]);
     const [question, setQuestion] = useState("");
-    const [reply, setReply] = useState("");
+    const [waiting, setWaiting] = useState(false);
 
     const pb = getclient();
 
@@ -18,7 +18,6 @@ export default function Context({id, close}) {
       {text:`is it a common word in ${lang}? `, prompt:`Is "${word}" a commonly used word in ${lang}?`},
       {text:`Give me some examples`, prompt:`Give me some examples on how "${word}" is used in the ${lang} language`},
     ]
-
 
     useEffect(() => {
         (async () => {
@@ -35,6 +34,7 @@ export default function Context({id, close}) {
           event.preventDefault();
           const newchats = [...chats, { role: "user", content: question }];
           setChats(newchats);
+          setWaiting(true);
           generate(newchats);
         }
       };
@@ -42,34 +42,23 @@ export default function Context({id, close}) {
     const handleClick = (prompt)=> {
       const newchats = [...chats, { role: "user", content: prompt }];
       setChats(newchats);
+      setWaiting(true);
       generate(newchats);
     }
 
     const generate = async (chats) => {
-      const res = await fetch("/api/talk", {
+      const res = await fetch("/api/context-vocab", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ chats }),
       });
-      setReply("");
+
+      const res_json = await res.json();
       setQuestion("");
-      const data = res.body;
-      if (!data) {
-        return;
-      }
-      const reader = data.getReader();
-      const decoder = new TextDecoder();
-      let done = false;
-      while (!done) {
-        const { value, done: doneReading } = await reader.read();
-        done = doneReading;
-        const chunkValue = decoder.decode(value);
-        setReply((prev) => prev + chunkValue);
-        // setChats([...chats, { role: "assistant", content: reply }]);
-      }
-      setChats([...chats, { role: "assistant", content: reply }]);
+      setWaiting(false);
+      setChats([...chats, res_json.message]);
     }
 
     const save = async () => {
@@ -117,6 +106,13 @@ export default function Context({id, close}) {
         })}
         </div>
         
+      {waiting? 
+      <div className="ai-spinner">
+          <div className="ai-bounce1 bg-accent"></div>
+          <div className="ai-bounce2 bg-accent"></div>
+          <div className="ai-bounce3 bg-accent"></div>
+      </div> : null}
+
     </motion.div>
     )
 }
