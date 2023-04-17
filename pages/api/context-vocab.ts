@@ -10,14 +10,25 @@ const sysPrompt = `
 You are a helpful assistant. You are helping with user's language learning.
 `
 
+export type ChatGPTAgent = "user"  | "assistant" | "system";
+
+export interface ChatGPTMessage {
+  role: ChatGPTAgent;
+  content: string;
+}
+
 export default async function POST(req, res) {
 
   const { chats } = await req.body || '';
 
+  const sysMsg: ChatGPTMessage[] = [{role: "system", content: sysPrompt}];
+
+  const messages: ChatGPTMessage[] = sysMsg.concat(chats);
+
   try {
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{role: "system", content: sysPrompt}].concat(chats),
+        messages: messages,
         max_tokens: 3000,
       },
       // {
