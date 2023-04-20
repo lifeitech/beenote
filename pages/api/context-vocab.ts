@@ -30,6 +30,7 @@ export default async function POST(req, res) {
         model: "gpt-3.5-turbo",
         messages: messages,
         max_tokens: 3000,
+        temperature: 0,
       },
       // {
       //   proxy: {

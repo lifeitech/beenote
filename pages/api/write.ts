@@ -23,7 +23,7 @@ const handler = async (req: Request): Promise<Response> => {
         {role:"system", content:"You are a helpful assistant who helps with language learning."},
         { role: "user", content: prompt },
     ],
-    temperature: 0.7,
+    temperature: 0,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
