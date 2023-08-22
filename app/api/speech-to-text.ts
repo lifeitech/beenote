@@ -1,12 +1,10 @@
 import { Readable } from "stream";
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
 // import { NextRequest, NextResponse } from "next/server";
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-const openai = new OpenAIApi(configuration);
 
 const iso6391 = {
   "english": "en",
@@ -42,22 +40,22 @@ export default async function handler(req, res) {
   const audio = req.body;
   
   try {
-    const resp = await openai.createTranscription(
-        audio,  // file
-        "whisper-1",  // model
-        '',  // prompt
-        'json',  // response_format
-        0,  // temperature
-        language,  // language
-        {
-        proxy: {
-          host: "127.0.0.1",
-          port: Number(process.env.PROXY_PORT),
-          protocol: "http",
-        },
+    const resp = await openai.audio.transcriptions.create({
+        file: audio,  // file
+        model: "whisper-1",  // model
+        prompt: '',  // prompt
+        response_format: 'json',  // response_format
+        temperature: 0,  // temperature
+        language: language,  // language
+      //   {
+      //   proxy: {
+      //     host: "127.0.0.1",
+      //     port: Number(process.env.PROXY_PORT),
+      //     protocol: "http",
+      //   },
       }
     );
-    res.status(200).json({ text: resp.data.text });
+    res.status(200).json({ text: resp.text });
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.response.data);

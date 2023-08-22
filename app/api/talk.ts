@@ -13,7 +13,8 @@ You are a helpful assistant. You are helping with user's language learning.
 `
 
 const handler = async (req: Request): Promise<Response> => {
-  const { chats } = (await req.json()) as {
+  const { apikey, chats } = (await req.json()) as {
+    apikey?: string,
     chats?: ChatGPTMessage[];
   };
   if (!chats) {
@@ -32,7 +33,7 @@ const handler = async (req: Request): Promise<Response> => {
     n: 1,
   };
 
-  const stream = await OpenAIStream(payload);
+  const stream = await OpenAIStream(apikey, payload);
   return new Response(stream);
 };
 

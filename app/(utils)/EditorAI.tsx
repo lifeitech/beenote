@@ -93,7 +93,7 @@ export default function EditorAI({ editor }: { editor: any }) {
       {showInput ? (
         <div className="flex flex-col gap-2 p-2 bg-primary rounded-xl appearfromBottom">
           
-        {apikey ? null :
+        {apikey? null :
         <div className="flex flex-row gap-2 items-center">
           <div className="">Input your OpenAI API key: </div>
           <input type="text" className="input input-bordered input-sm w-full max-w-xs" value={apikey} onChange={(e) => setApiKey(e.target.value)}/>

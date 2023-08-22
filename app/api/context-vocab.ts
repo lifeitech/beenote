@@ -1,10 +1,8 @@
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
+  });
 
 const sysPrompt = `
 You are a helpful assistant. You are helping with user's language learning.
@@ -26,7 +24,7 @@ export default async function POST(req, res) {
   const messages: ChatGPTMessage[] = sysMsg.concat(chats);
 
   try {
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: messages,
         max_tokens: 3000,
@@ -40,7 +38,7 @@ export default async function POST(req, res) {
       //   },
       // }
     );
-    res.status(200).json({ message: completion.data.choices[0].message });
+    res.status(200).json({ message: completion.choices[0].message });
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.response.data);
