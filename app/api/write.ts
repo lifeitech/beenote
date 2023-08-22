@@ -9,8 +9,9 @@ export const config = {
 };
 
 const handler = async (req: Request): Promise<Response> => {
-  const { prompt } = (await req.json()) as {
-    prompt?: string;
+  const { apikey, prompt } = (await req.json()) as {
+    apikey?: string,
+    prompt?: string
   };
 
   if (!prompt) {
@@ -32,7 +33,7 @@ const handler = async (req: Request): Promise<Response> => {
     n: 1,
   };
 
-  const stream = await OpenAIStream(payload);
+  const stream = await OpenAIStream(apikey, payload);
   return new Response(stream);
 };
 

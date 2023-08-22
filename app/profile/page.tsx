@@ -2,7 +2,7 @@
 import { useState } from "react";
 import ProfileDrop from "@utils/ProfileDrop";
 import BasicInfo from "./basicinfo";
-import Diamond from "./diamond";
+import APIKey from "./apikey";
 import Email from "./email";
 import Password from "./password";
 import DeleteAccount from "./delete";
@@ -24,7 +24,7 @@ export default function Profile() {
           </li>
           <li>
             <a className={tab == 1 ? `active` : ""} onClick={() => setTab(1)}>
-            <i className="ri-vip-diamond-line"/> Diamonds
+            <i className="ri-vip-diamond-line"/> API Key
             </a>
           </li>
           <li>
@@ -46,7 +46,7 @@ export default function Profile() {
 
         <div>
           {tab == 0 ? <BasicInfo /> : null}
-          {tab == 1 ? <Diamond /> : null}
+          {tab == 1 ? <APIKey /> : null}
           {tab == 2 ? <Email /> : null}
           {tab == 3 ? <Password /> : null}
           {tab == 4 ? <DeleteAccount /> : null}

@@ -2,22 +2,20 @@
 import { useState, useEffect } from "react";
 import getclient from "@utils/pb-client";
 import Swal from 'sweetalert2'
-
+import Link from 'next/link'
 
 export default function EditorAI({ editor }: { editor: any }) {
   const [showInput, setShowInput] = useState(false);
   const [prompt, setPrompt] = useState("");
+  const [apikey, setApiKey] = useState("");
   const [waiting, setWaiting] = useState(false);
-  const [point, setPoint] = useState(0);
-  const [quota, setQuota] = useState(0);
   const pb = getclient();
   const userId = pb.authStore.model.id;
-  
+
   useEffect(() => {
     (async () => {
       const record = await pb.collection('users').getOne(userId);
-      setPoint(record.point);
-      setQuota(record.quota);
+      setApiKey(record.apikey);
     })();
   }, [])
 
@@ -49,15 +47,11 @@ export default function EditorAI({ editor }: { editor: any }) {
       Swal.fire('Input cannot be empty');
       return;
     }
-    if (point == 0) {
-      Swal.fire({
-        title: 'Free usage limit reached.',
-        text: 'You have used all your free AI responses. Upgrade to pro account for unlimited access!',
-        icon: 'warning',
-        confirmButtonText: 'OK',
-      });
+    if (!apikey) {
+      Swal.fire('No API key provided');
       return;
     }
+
     try {
       setWaiting(true);
       setPrompt("");
@@ -66,7 +60,7 @@ export default function EditorAI({ editor }: { editor: any }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt, }),
+        body: JSON.stringify({ apikey: apikey, prompt: prompt }),
       });
       const data = res.body;
       if (!data) {
@@ -87,8 +81,6 @@ export default function EditorAI({ editor }: { editor: any }) {
       editor.commands.selectNodeBackward();
       setShowInput(false);
       setWaiting(false);
-      await pb.collection('users').update(userId, {point:point-1});
-      setPoint(point => point - 1);
     } catch (error) {
       console.error(error);
       alert(error.message);
@@ -99,7 +91,16 @@ export default function EditorAI({ editor }: { editor: any }) {
   return (
     <div className="absolute -bottom-20 left-5 z-20">
       {showInput ? (
-        <div className="flex flex-col gap-2 appearfromBottom">
+        <div className="flex flex-col gap-2 p-2 bg-primary rounded-xl appearfromBottom">
+          
+        {apikey ? null :
+        <div className="flex flex-row gap-2 items-center">
+          <div className="">Input your OpenAI API key: </div>
+          <input type="text" className="input input-bordered input-sm w-full max-w-xs" value={apikey} onChange={(e) => setApiKey(e.target.value)}/>
+          <Link className="underline" href='/profile'>configure</Link>
+        </div> 
+        }
+
         <div className="relative flex flex-row items-center">
           {waiting?
           <div className="ai-spinner absolute left-3 bottom-2">
@@ -126,12 +127,6 @@ export default function EditorAI({ editor }: { editor: any }) {
           >
             <i title="Send to AI" className="cursor-pointer text-primary hover:text-primary-focus text-xl ri-arrow-up-circle-line"></i>
           </div>
-        </div>
-        <div className="flex flex-row gap-2">
-        <progress className="progress progress-secondary w-[750px]" value={point} max={quota}></progress>
-        <div className="tooltip tooltip-bottom" data-tip="💎Diamonds left">
-          <p className="text-sm ">{point}/{quota}</p>
-        </div>
         </div>
         </div>
       ) : null}

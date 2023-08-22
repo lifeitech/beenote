@@ -15,6 +15,7 @@
 # PocketBase
 /pb_data/
 /pb_migrations/
+pocketbase
 pocketbase.exe
 
 # production
