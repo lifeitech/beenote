@@ -29,7 +29,7 @@
     "eslint-config-next": "13.4.19",
     "eventsource-parser": "^1.0.0",
     "framer-motion": "^10.16.1",
-    "next": "^13.4.19",
+    "next": "^13.5.2",
     "openai": "^4.0.1",
     "pocketbase": "^0.16.0",
     "react": "^18.2.0",
