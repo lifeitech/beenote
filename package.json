@@ -1,6 +1,6 @@
 {
   "name": "beenote",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -29,7 +29,7 @@
     "eslint-config-next": "13.4.19",
     "eventsource-parser": "^1.0.0",
     "framer-motion": "^10.16.1",
-    "next": "^13.5.2",
+    "next": "^14.1.0",
     "openai": "^4.0.1",
     "pocketbase": "^0.16.0",
     "react": "^18.2.0",

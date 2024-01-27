@@ -1,5 +1,4 @@
 'use client';
-// import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import getclient from '@utils/pb-client';
 import toast from 'react-hot-toast';
@@ -38,6 +37,3 @@ export default function DeleteLang({id}:{id:string}) {
         </div>
     )
 }
-
-
-

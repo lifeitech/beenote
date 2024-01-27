@@ -15,7 +15,6 @@ export default async function Home({ params }: any) {
 
   return (
     <div>
-      {/* <h2 className="text-3xl font-bold mt-0 mx-4 mb-4 bg-base-100">{title}</h2> */}
       <Title id={id} title={title} url={url} lang={params.lang}/>
       <Tiptap content={content} collection={'grammar'} id={id} />
     </div>

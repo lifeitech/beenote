@@ -70,7 +70,6 @@ export default function CreateLanguage({ created }: { created: string[] }) {
       return undefined;
     }
     const client = getclient();
-    // const userId = JSON.parse(decodeURIComponent(document.cookie).substring(8)).model.id;
     const userId = client.authStore.model.id;
     const res = await client.collection("language").create({
       userId: userId,
@@ -91,7 +90,6 @@ export default function CreateLanguage({ created }: { created: string[] }) {
     <>
       <label htmlFor="modal-create-lang" className="cursor-pointer">
         <div className="relative">
-          {/* <div className="absolute w-56 h-56 rounded-lg -right-4 -bottom-4  bg-accent z-0"></div> */}
           <div className="flex flex-row relative items-center justify-center gap-2 box-border w-72 h-20 p-4 border-4 rounded-full border-slate-800 bg-primary z-10 active:translate-x-1 active:translate-y-1">
             <i className="ri-add-line text-xl"></i>
             <span className="text-xl">Create Language</span>

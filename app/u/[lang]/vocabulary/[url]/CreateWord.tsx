@@ -10,7 +10,6 @@ export default function CreateWord({lang, url}:{lang:string, url:string}) {
     const router = useRouter();
     const create = async () => {
         const client = getclient();
-        // const userId = JSON.parse(decodeURIComponent(document.cookie).substring(8)).model.id;
         const userId = client.authStore.model.id;
         const res = await client.collection('vocabulary').create({
             userId: userId,
@@ -46,4 +45,3 @@ export default function CreateWord({lang, url}:{lang:string, url:string}) {
       </div>
     )
 }
-

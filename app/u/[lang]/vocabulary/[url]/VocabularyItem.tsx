@@ -1,12 +1,10 @@
 'use client';
-// import { useState } from 'react';
 import { motion } from "framer-motion";
 import { useRouter } from 'next/navigation';
 import getclient from '@utils/pb-client';
 import toast from 'react-hot-toast';
 import RecordAudio from '@utils/RecordAudio';
 import { useTheme } from '@utils/Theme';
-// import Image from 'next/image';
 
 const maketoast = (res) => {
   if (!res.code) {toast.success('Saved');}
@@ -14,7 +12,6 @@ const maketoast = (res) => {
 }
 
 export default function VocabularyItem({id, word, part, meaning, audio, image, onclick}) {
-    // const [doubleclicked, setDoubleclicked] = useState(false);
     const theme = useTheme();
     const router = useRouter();
     const client = getclient();
@@ -22,7 +19,6 @@ export default function VocabularyItem({id, word, part, meaning, audio, image, o
     const updateWord = async (value) => {
     if (value != word){
       const res = await client.collection('vocabulary').update(id, {word: value});
-      // maketoast(res);
       router.refresh();
     }
   }
@@ -30,7 +26,6 @@ export default function VocabularyItem({id, word, part, meaning, audio, image, o
   const updatePart = async (value) => {
     if (value != part){
       const res = await client.collection('vocabulary').update(id, {part: value});
-      // maketoast(res);
       router.refresh();
     }
   }
@@ -38,7 +33,6 @@ export default function VocabularyItem({id, word, part, meaning, audio, image, o
   const updateMeaning = async (value) => {
     if (value != meaning){
       const res = await client.collection('vocabulary').update(id, {meaning: value});
-      // maketoast(res);
       router.refresh();
     }
   }
@@ -51,30 +45,18 @@ export default function VocabularyItem({id, word, part, meaning, audio, image, o
   }
   const audio_url =  `${process.env.NEXT_PUBLIC_POCKETBASE}/api/files/vocabulary/${id}/${audio}`;
   const playAudio = () => {
-    // const audio = document.getElementById(`audio-${id}`);
     const audio = new Audio(audio_url);
     audio.play();
   }
 
-  // const image_url =  `${process.env.NEXT_PUBLIC_POCKETBASE}/api/files/vocabulary/${id}/${image}`;
-  // const [hovering, setHovering] = useState(false);
-//   const uploadImage = async (e:React.FormEvent<HTMLFormElement>)=> { 
-//     e.preventDefault();
-//     const form = e.currentTarget;
-//     const formData = new FormData(form);
-//     const res = await client.collection('vocabulary').update(id, formData)
-//     toast.success('Successfully uploaded image')
-//     router.refresh();
-//     // setModifyAvatar(false);
-// }
-
     return (
-        <motion.div className='relative cursor-pointer rounded-xl border-2 border-b-4 p-4 flex flex-row gap-2 items-center' 
-        layoutId={id}
+        <div className='relative cursor-pointer rounded-xl border-2 border-b-4 p-4 flex flex-row gap-2 items-center' 
+        // layoutId={id}
         onClick={onclick}
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
+        // transition={{ duration: 0 }}
         >
         <div className='flex flex-col gap-2'>
         <div className='flex flex-row gap-2 items-center'>
@@ -101,31 +83,7 @@ export default function VocabularyItem({id, word, part, meaning, audio, image, o
         <div title="Delete" onClick={(e)=>{e.stopPropagation();deleteword()}} className='absolute right-1 bottom-0 text-lg cursor-pointer text-gray-400 hover:text-error z-10' >       
           <i className="ri-close-circle-line"></i>
         </div>
-        </motion.div>
+        </div>
 
     )
 }
-
-
-
-{/* <div className="w-32 flex flex-row items-center justify-center gap-2">
-  
-  {image? 
-  <div className='relative cursor-pointer'>
-  <i onMouseOver={()=>setHovering(true)} onMouseOut={()=>setHovering(false)} className={`ri-image-fill text-xl`}></i>
-  {hovering && 
-  <div className='absolute -left-[350px] z-10'>
-    <Image src={image_url} width={300} height={300} className="object-none overflow-visible" alt="visualization of this word"></Image>
-  </div>}
-  </div>
-  :
-  <i className={`ri-image-fill ${theme == 'bubblebee' ? 'text-gray-300' : 'text-gray-600'} text-xl`}></i>
-}
-
-  <label htmlFor={`img-input-${id}`} title='Upload Image' className='cursor-pointer'><i className="ri-upload-2-fill"></i></label>
-  <form method="post" onChange={uploadImage} className='hidden'>
-    <input id={`img-input-${id}`} type="file" name="image" required/>
-  </form>
-</div> */}
-
-{/* <div title='delete' className='cursor-pointer ml-2 text-gray-400 hover:text-error' onClick={deleteword}><i className="ri-close-circle-line"></i></div> */}

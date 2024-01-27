@@ -32,6 +32,3 @@ export default function DeleteGrammar({id}:{id:string}) {
         </div>
     )
 }
-
-
-

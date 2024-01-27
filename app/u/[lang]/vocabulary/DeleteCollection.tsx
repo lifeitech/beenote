@@ -30,4 +30,3 @@ export default function DeleteCollection({id}:{id:string}) {
         </div>
     )
 }
-

@@ -9,6 +9,5 @@ export default function getclient() {
       document.cookie = client.authStore.exportToCookie({ httpOnly: false });
     });
   }
-  // const userId = JSON.parse(decodeURIComponent(document.cookie).substring(8)).model.id;
   return client;
 }

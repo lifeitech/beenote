@@ -15,7 +15,6 @@ const CreateAlphabet = ({category, lang}) => {
         return
       }
       const client = getclient();
-      // const userId = JSON.parse(decodeURIComponent(document.cookie).substring(8)).model.id;
       const userId = client.authStore.model.id;
       const res = await client.collection('alphabet').create({
             userId: userId,
