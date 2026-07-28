@@ -59,7 +59,7 @@ export default function EditorAI({ editor }: { editor: any }) {
       setPrompt("");
       const openai = createOpenAI({ apiKey: apikey });
       const { textStream } = streamText({
-        model: openai("gpt-5.5"),
+        model: openai("gpt-4o"),
         system: "You are a helpful assistant who helps with language learning.",
         prompt,
       });
